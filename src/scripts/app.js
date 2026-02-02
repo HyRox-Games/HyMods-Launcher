@@ -1,4 +1,4 @@
-const { shell } = require('electron');
+const { shell, ipcRenderer } = require('electron');
 const fs = require('fs');
 const path = require('path');
 
@@ -12,11 +12,35 @@ let currentFilter = 'all';
 
 // DOM Elements - will be initialized after DOM loads
 let loadingOverlay;
+let updateModal;
+let updateTitle;
+let updateMessage;
+let restartBtn;
 
 // Initialize
 document.addEventListener('DOMContentLoaded', async () => {
     // Initialize DOM elements
     loadingOverlay = document.getElementById('loadingOverlay');
+    updateModal = document.getElementById('updateModal');
+    updateTitle = document.getElementById('updateTitle');
+    updateMessage = document.getElementById('updateMessage');
+    restartBtn = document.getElementById('restartBtn');
+
+    // Setup Update Listeners
+    ipcRenderer.on('update_available', () => {
+        updateModal.classList.remove('hidden');
+        updateMessage.textContent = 'جاري تحميل التحديث الجديد...';
+        restartBtn.classList.add('hidden');
+    });
+
+    ipcRenderer.on('update_downloaded', () => {
+        updateMessage.textContent = 'تم تحميل التحديث بنجاح. يجب إعادة التشغيل لتثبيت التحديث.';
+        restartBtn.classList.remove('hidden');
+    });
+
+    restartBtn.addEventListener('click', () => {
+        ipcRenderer.send('restart_app');
+    });
 
     setupEventListeners();
     await loadAllContent();

@@ -1,4 +1,4 @@
-const { app, BrowserWindow } = require('electron');
+const { app, BrowserWindow, ipcMain } = require('electron');
 const path = require('path');
 
 let mainWindow;
@@ -44,6 +44,11 @@ function createWindow() {
     });
 }
 
+// IPC Handlers
+ipcMain.on('restart_app', () => {
+    autoUpdater.quitAndInstall();
+});
+
 const { autoUpdater } = require('electron-updater');
 
 // Configure autoUpdater
@@ -54,16 +59,18 @@ autoUpdater.autoDownload = false;
 // Auto-updater events
 autoUpdater.on('update-available', () => {
     if (mainWindow) {
-        mainWindow.webContents.send('update start');
+        mainWindow.webContents.send('update_available');
+        // Automatically start downloading
         autoUpdater.downloadUpdate();
     }
 });
 
 autoUpdater.on('update-downloaded', () => {
     if (mainWindow) {
-        mainWindow.webContents.send('update ready');
+        mainWindow.webContents.send('update_downloaded');
     }
 });
+
 
 app.whenReady().then(() => {
     createWindow();
