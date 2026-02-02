@@ -1,104 +1,141 @@
-const fs = require('fs').promises;
+const { Sequelize, DataTypes } = require('sequelize');
 const path = require('path');
 
-const DATA_DIR = path.join(__dirname, '../data');
-const MODS_FILE = path.join(DATA_DIR, 'mods.json');
-const MAPS_FILE = path.join(DATA_DIR, 'maps.json');
-const PREFABS_FILE = path.join(DATA_DIR, 'prefabs.json');
+// Initialize Sequelize
+// Use SQLite for local development (dev mode or no connection string)
+// Use PostgreSQL for production (when DATABASE_URL is present)
+const isProduction = process.env.NODE_ENV === 'production' || process.env.DATABASE_URL;
 
-const FILE_MAP = {
-    mods: MODS_FILE,
-    maps: MAPS_FILE,
-    prefabs: PREFABS_FILE
+let sequelize;
+
+if (isProduction && process.env.DATABASE_URL) {
+    sequelize = new Sequelize(process.env.DATABASE_URL, {
+        dialect: 'postgres',
+        logging: false,
+        dialectOptions: {
+            ssl: {
+                require: true,
+                rejectUnauthorized: false
+            }
+        }
+    });
+} else {
+    // Local development - SQLite
+    const dbPath = path.join(__dirname, '../../database.sqlite');
+    sequelize = new Sequelize({
+        dialect: 'sqlite',
+        storage: dbPath,
+        logging: false
+    });
+}
+
+// Models
+const Mod = sequelize.define('Mod', {
+    name: { type: DataTypes.STRING, allowNull: false },
+    description: DataTypes.TEXT,
+    author: DataTypes.STRING,
+    version: DataTypes.STRING,
+    imageUrl: DataTypes.STRING,
+    downloadUrl: DataTypes.STRING,
+    downloads: { type: DataTypes.INTEGER, defaultValue: 0 },
+    uploadedAt: { type: DataTypes.DATE, defaultValue: DataTypes.NOW }
+});
+
+const Map = sequelize.define('Map', {
+    name: { type: DataTypes.STRING, allowNull: false },
+    description: DataTypes.TEXT,
+    author: DataTypes.STRING,
+    version: DataTypes.STRING,
+    imageUrl: DataTypes.STRING,
+    downloadUrl: DataTypes.STRING,
+    downloads: { type: DataTypes.INTEGER, defaultValue: 0 },
+    uploadedAt: { type: DataTypes.DATE, defaultValue: DataTypes.NOW }
+});
+
+const Prefab = sequelize.define('Prefab', {
+    name: { type: DataTypes.STRING, allowNull: false },
+    description: DataTypes.TEXT,
+    author: DataTypes.STRING,
+    version: DataTypes.STRING,
+    imageUrl: DataTypes.STRING,
+    downloadUrl: DataTypes.STRING,
+    downloads: { type: DataTypes.INTEGER, defaultValue: 0 },
+    uploadedAt: { type: DataTypes.DATE, defaultValue: DataTypes.NOW }
+});
+
+const MODELS = {
+    mods: Mod,
+    maps: Map,
+    prefabs: Prefab
 };
 
-async function ensureDataFiles() {
-    await fs.mkdir(DATA_DIR, { recursive: true });
+// Database Connection & Sync
+async function connectDB() {
+    try {
+        await sequelize.authenticate();
+        console.log('Database Connected (' + (isProduction ? 'PostgreSQL' : 'SQLite') + ')');
 
-    for (const [type, filePath] of Object.entries(FILE_MAP)) {
-        try {
-            await fs.access(filePath);
-        } catch {
-            // File doesn't exist, create with empty array
-            await fs.writeFile(filePath, JSON.stringify([], null, 2));
-        }
+        // Sync models (create tables if not exist)
+        // In production, you might want to use migrations instead of alter: true
+        await sequelize.sync({ alter: true });
+        console.log('Database Synced');
+    } catch (error) {
+        console.error('Database connection error:', error);
     }
 }
 
+// Data Access Methods
 async function getAllContent(type) {
-    await ensureDataFiles();
-    const filePath = FILE_MAP[type];
-    if (!filePath) throw new Error('Invalid content type');
-
-    const data = await fs.readFile(filePath, 'utf8');
-    return JSON.parse(data);
+    const Model = MODELS[type];
+    if (!Model) throw new Error('Invalid content type');
+    // Sequelize uses 'DESC' for sorting
+    return await Model.findAll({ order: [['uploadedAt', 'DESC']] });
 }
 
 async function addContent(type, contentData) {
-    await ensureDataFiles();
-    const filePath = FILE_MAP[type];
-    if (!filePath) throw new Error('Invalid content type');
+    const Model = MODELS[type];
+    if (!Model) throw new Error('Invalid content type');
 
-    const contents = await getAllContent(type);
-
-    // Generate unique ID
-    const newContent = {
-        id: Date.now().toString(),
-        ...contentData,
-        uploadedAt: new Date().toISOString(),
-        downloads: 0
-    };
-
-    contents.push(newContent);
-    await fs.writeFile(filePath, JSON.stringify(contents, null, 2));
-
-    return newContent;
+    return await Model.create(contentData);
 }
 
 async function updateContent(type, id, updates) {
-    await ensureDataFiles();
-    const filePath = FILE_MAP[type];
-    if (!filePath) throw new Error('Invalid content type');
+    const Model = MODELS[type];
+    if (!Model) throw new Error('Invalid content type');
 
-    const contents = await getAllContent(type);
-    const index = contents.findIndex(item => item.id === id);
+    const item = await Model.findByPk(id);
+    if (!item) throw new Error('Content not found');
 
-    if (index === -1) throw new Error('Content not found');
-
-    contents[index] = { ...contents[index], ...updates };
-    await fs.writeFile(filePath, JSON.stringify(contents, null, 2));
-
-    return contents[index];
+    return await item.update(updates);
 }
 
 async function deleteContent(type, id) {
-    await ensureDataFiles();
-    const filePath = FILE_MAP[type];
-    if (!filePath) throw new Error('Invalid content type');
+    const Model = MODELS[type];
+    if (!Model) throw new Error('Invalid content type');
 
-    const contents = await getAllContent(type);
-    const filtered = contents.filter(item => item.id !== id);
-
-    await fs.writeFile(filePath, JSON.stringify(filtered, null, 2));
-
-    return true;
+    const item = await Model.findByPk(id);
+    if (item) {
+        await item.destroy();
+        return true;
+    }
+    return false;
 }
 
 async function incrementDownloads(type, id) {
-    const contents = await getAllContent(type);
-    const item = contents.find(c => c.id === id);
+    const Model = MODELS[type];
+    if (!Model) throw new Error('Invalid content type');
 
+    const item = await Model.findByPk(id);
     if (item) {
-        item.downloads = (item.downloads || 0) + 1;
-        await updateContent(type, id, { downloads: item.downloads });
+        await item.increment('downloads');
     }
 }
 
 module.exports = {
+    connectDB,
     getAllContent,
     addContent,
     updateContent,
     deleteContent,
-    incrementDownloads,
-    ensureDataFiles
+    incrementDownloads
 };

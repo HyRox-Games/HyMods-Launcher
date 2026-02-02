@@ -2,22 +2,11 @@ const { ipcRenderer } = require('electron');
 const io = require('socket.io-client');
 
 // Initialize Socket.IO connection for online tracking
-const socket = io('http://localhost:3000');
+// API Configuration
+const API_URL = 'https://hymods-backend.onrender.com'; // CHANGE THIS AFTER DEPLOYMENT
+const socket = io(API_URL);
 
-// State
-let currentTab = 'mods';
-let currentFilter = 'all';
-let allMods = [];
-let allMaps = [];
-let allPrefabs = [];
-
-// DOM Elements
-const tabButtons = document.querySelectorAll('.tab-btn');
-const tabContents = document.querySelectorAll('.tab-content');
-const filterButtons = document.querySelectorAll('.filter-btn');
-const searchInput = document.getElementById('searchInput');
-const onlineCountElement = document.getElementById('onlineCount');
-const loadingOverlay = document.getElementById('loadingOverlay');
+// ...
 
 // Initialize
 document.addEventListener('DOMContentLoaded', async () => {
@@ -27,88 +16,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     setupAdminTrigger();
 });
 
-// Socket.IO - Online Counter
-socket.on('online-count', (count) => {
-    onlineCountElement.textContent = count;
-    const statsOnline = document.getElementById('statsOnline');
-    if (statsOnline) {
-        statsOnline.textContent = count;
-    }
-});
-
-// Event Listeners
-function setupEventListeners() {
-    // Tab switching
-    tabButtons.forEach(btn => {
-        btn.addEventListener('click', () => {
-            const tab = btn.dataset.tab;
-            switchTab(tab);
-        });
-    });
-
-    // Filter buttons
-    filterButtons.forEach(btn => {
-        btn.addEventListener('click', () => {
-            const filter = btn.dataset.filter;
-            setFilter(filter);
-        });
-    });
-
-    // Search
-    searchInput.addEventListener('input', (e) => {
-        handleSearch(e.target.value);
-    });
-}
-
-// Tab Switching
-function switchTab(tab) {
-    currentTab = tab;
-
-    // Update buttons
-    tabButtons.forEach(btn => {
-        btn.classList.toggle('active', btn.dataset.tab === tab);
-    });
-
-    // Update content
-    tabContents.forEach(content => {
-        content.classList.toggle('active', content.id === `${tab}-tab`);
-    });
-
-    // Render content
-    renderContent();
-}
-
-// Filter
-function setFilter(filter) {
-    currentFilter = filter;
-
-    // Update all filter buttons in all tabs
-    document.querySelectorAll('.filter-btn').forEach(btn => {
-        btn.classList.toggle('active', btn.dataset.filter === filter);
-    });
-
-    renderContent();
-}
-
-// Search
-function handleSearch(query) {
-    const lowerQuery = query.toLowerCase();
-
-    let data = getCurrentData();
-
-    if (query.trim() === '') {
-        renderContent();
-        return;
-    }
-
-    const filtered = data.filter(item =>
-        item.name.toLowerCase().includes(lowerQuery) ||
-        item.description.toLowerCase().includes(lowerQuery) ||
-        item.author.toLowerCase().includes(lowerQuery)
-    );
-
-    renderFilteredContent(filtered);
-}
+// ...
 
 // Load Content
 async function loadAllContent() {
@@ -116,9 +24,9 @@ async function loadAllContent() {
 
     try {
         const [mods, maps, prefabs] = await Promise.all([
-            fetch('http://localhost:3000/api/mods').then(r => r.json()),
-            fetch('http://localhost:3000/api/maps').then(r => r.json()),
-            fetch('http://localhost:3000/api/prefabs').then(r => r.json())
+            fetch(`${API_URL}/api/mods`).then(r => r.json()),
+            fetch(`${API_URL}/api/maps`).then(r => r.json()),
+            fetch(`${API_URL}/api/prefabs`).then(r => r.json())
         ]);
 
         allMods = mods;
@@ -231,7 +139,7 @@ async function handleDownload(id) {
 
     try {
         // Increment download count
-        await fetch(`http://localhost:3000/api/download/${currentTab}/${id}`, {
+        await fetch(`${API_URL}/api/download/${currentTab}/${id}`, {
             method: 'POST'
         });
 

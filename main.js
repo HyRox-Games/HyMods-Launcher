@@ -1,8 +1,5 @@
 const { app, BrowserWindow, ipcMain } = require('electron');
 const path = require('path');
-const { startServer } = require('./src/backend/server');
-const { initializeTracker } = require('./src/backend/tracker');
-const { getAllContent } = require('./src/backend/database');
 
 let mainWindow;
 let serverInstance;
@@ -79,11 +76,7 @@ autoUpdater.on('update-downloaded', () => {
 });
 
 app.whenReady().then(async () => {
-    // Start backend server
-    serverInstance = await startServer();
-
-    // Initialize online user tracker
-    initializeTracker(serverInstance);
+    // Server and Tracker logic removed - App now connects to cloud server
 
     createWindow();
 
@@ -106,7 +99,4 @@ app.on('window-all-closed', () => {
 });
 
 app.on('quit', () => {
-    if (serverInstance) {
-        serverInstance.close();
-    }
 });
