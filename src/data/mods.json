@@ -1,35 +1,46 @@
 [
   {
     "id": "1",
-    "name": "Enhanced Graphics Mod",
-    "description": "تحسين الرسومات والإضاءة في Hytale مع تأثيرات بصرية مذهلة وظلال واقعية",
-    "version": "2.1.0",
+    "name": "BetterMap",
+    "description": "Enhance your world exploration with saved map data, customizable zoom, waypoints, shared mapping, and performance-optimized rendering.",
+    "version": "1.2.7",
     "author": "HyMods Team",
-    "downloadUrl": "https://example.com/downloads/enhanced-graphics.zip",
-    "imageUrl": "",
-    "uploadedAt": "2026-01-28T10:00:00Z",
-    "downloads": 1547
+    "downloadUrl": "https://drive.google.com/file/d/1M0KAqLpM1-8NNmEl4ZAzFUnzEBHkftJj/view?usp=sharing",
+    "imageUrl": "https://image2url.com/r2/default/images/1770019225265-94b5d3d0-bed3-43e6-9212-bedef3df0da4.png",
+    "uploadedAt": "?",
+    "downloads": 100
   },
   {
     "id": "2",
-    "name": "Advanced Combat System",
-    "description": "نظام قتال متقدم مع مهارات جديدة وأسلحة إضافية وتحسينات في الميكانيكا القتالية",
-    "version": "1.5.2",
-    "author": "CombatMaster",
-    "downloadUrl": "https://example.com/downloads/combat-system.zip",
-    "imageUrl": "",
-    "uploadedAt": "2026-01-30T14:30:00Z",
-    "downloads": 892
+    "name": "CobbleGens",
+    "description": "The Cobble Generators mod adds a new machine that passively produces cobblestone over time! This mod requires the Spellbook plugin! Things will not work as expected if you don't install it.",
+    "version": "0.0.0",
+    "author": "HyMods Team",
+    "downloadUrl": "https://drive.google.com/file/d/1ejJbEYprH65KnqhSZkpK1a_vdVbwaa7p/view?usp=sharing",
+    "imageUrl": "https://image2url.com/r2/default/images/1770019692096-55227938-439b-4099-a213-90980bc6ebd7.png",
+    "uploadedAt": "?",
+    "downloads": 100
   },
   {
     "id": "3",
-    "name": "Magic & Spells Expansion",
-    "description": "إضافة أكثر من 50 تعويذة سحرية جديدة مع نظام سحر متطور وتأثيرات بصرية رائعة",
-    "version": "3.0.1",
-    "author": "MagicCraft",
-    "downloadUrl": "https://example.com/downloads/magic-expansion.zip",
-    "imageUrl": "",
-    "uploadedAt": "2026-02-01T09:15:00Z",
+    "name": "levelTools",
+    "description": "Level up your tools when broken! Like a muscle!!!",
+    "version": "2.1.0",
+    "author": "HyMods Team",
+    "downloadUrl": "https://drive.google.com/file/d/1G69cPyn-WGq8jj92iHeYikOYPELGtaZ2/view?usp=sharing",
+    "imageUrl": "https://image2url.com/r2/default/images/1770019929605-2228d60d-06b8-47e5-b7a4-1e6c8e3483fa.png",
+    "uploadedAt": "?",
     "downloads": 2104
+  },
+  {
+    "id": "4",
+    "name": "RPG Leveling And Stats/Skills",
+    "description": "RPG Leveling turns Hytale into a true RPG with XP, levels, zones, scaling difficulty, and stat progression. Earn balanced XP, choose Easy–Extreme modes, and spend points on Damage, Defense, Health, Stamina, and more. Includes HUD, GUI, and leaderboard.",
+    "version": "0.2.1",
+    "author": "HyMods Team",
+    "downloadUrl": "https://drive.google.com/file/d/1hul6s1eLHHli4BhjQiO75Z3vvqeoLQNj/view?usp=sharing",
+    "imageUrl": "https://image2url.com/r2/default/images/1770020249270-bee65f1d-7a6a-4fc8-b4ae-da5462761757.png",
+    "uploadedAt": "?",
+    "downloads": 29
   }
 ]

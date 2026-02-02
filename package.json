@@ -23,6 +23,7 @@
     "electron-builder": "^24.9.1"
   },
   "dependencies": {
+    "electron-log": "^5.4.3",
     "electron-updater": "^6.7.3",
     "express": "^4.18.2",
     "socket.io": "^4.6.1",
@@ -55,8 +56,8 @@
     "publish": [
       {
         "provider": "github",
-        "owner": "YOUR_GITHUB_USERNAME",
-        "repo": "YOUR_REPO_NAME"
+        "owner": "HyRox_Games",
+        "repo": "HyMods-Launcher"
       }
     ]
   }
