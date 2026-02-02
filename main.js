@@ -1,8 +1,7 @@
-const { app, BrowserWindow, ipcMain } = require('electron');
+const { app, BrowserWindow } = require('electron');
 const path = require('path');
 
 let mainWindow;
-let serverInstance;
 
 function createWindow() {
     const iconPath = path.join(__dirname, 'assets/icons/icon.png');
@@ -16,8 +15,7 @@ function createWindow() {
         backgroundColor: '#0a0e27',
         webPreferences: {
             nodeIntegration: true,
-            contextIsolation: false,
-            enableRemoteModule: true
+            contextIsolation: false
         },
         frame: true,
         autoHideMenuBar: true,
@@ -38,7 +36,7 @@ function createWindow() {
         mainWindow.show();
     });
 
-    // Open DevTools in development
+    // DevTools disabled
     // mainWindow.webContents.openDevTools();
 
     mainWindow.on('closed', () => {
@@ -51,14 +49,12 @@ const { autoUpdater } = require('electron-updater');
 // Configure autoUpdater
 autoUpdater.logger = require('electron-log');
 autoUpdater.logger.transports.file.level = 'info';
-autoUpdater.autoDownload = false; // Let user decide or auto-download
-
+autoUpdater.autoDownload = false;
 
 // Auto-updater events
 autoUpdater.on('update-available', () => {
     if (mainWindow) {
         mainWindow.webContents.send('update start');
-        // Auto download or ask user
         autoUpdater.downloadUpdate();
     }
 });
@@ -66,17 +62,13 @@ autoUpdater.on('update-available', () => {
 autoUpdater.on('update-downloaded', () => {
     if (mainWindow) {
         mainWindow.webContents.send('update ready');
-        // Install immediately or wait
-        // autoUpdater.quitAndInstall(); 
     }
 });
 
-app.whenReady().then(async () => {
-    // Server and Tracker logic removed - App now connects to cloud server
-
+app.whenReady().then(() => {
     createWindow();
 
-    // Check for updates
+    // Check for updates (only in packaged app)
     if (app.isPackaged) {
         autoUpdater.checkForUpdates();
     }
@@ -92,7 +84,4 @@ app.on('window-all-closed', () => {
     if (process.platform !== 'darwin') {
         app.quit();
     }
-});
-
-app.on('quit', () => {
 });

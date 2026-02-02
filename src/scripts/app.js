@@ -1,42 +1,107 @@
-const { ipcRenderer } = require('electron');
-const io = require('socket.io-client');
+const { shell } = require('electron');
+const fs = require('fs');
+const path = require('path');
 
-// Initialize Socket.IO connection for online tracking
-// API Configuration
-const API_URL = 'https://hymods-launcher.onrender.com'; // CHANGE THIS AFTER DEPLOYMENT
-const socket = io(API_URL);
+// Load local JSON data
+let allMods = [];
+let allMaps = [];
+let allPrefabs = [];
 
-// ...
+let currentTab = 'mods';
+let currentFilter = 'all';
+
+// DOM Elements - will be initialized after DOM loads
+let loadingOverlay;
 
 // Initialize
 document.addEventListener('DOMContentLoaded', async () => {
+    // Initialize DOM elements
+    loadingOverlay = document.getElementById('loadingOverlay');
+
     setupEventListeners();
     await loadAllContent();
     setupAdminShortcut();
     setupAdminTrigger();
 });
 
-// ...
+// Setup Event Listeners
+function setupEventListeners() {
+    // Tab switching
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            currentTab = btn.dataset.tab;
+            switchTab(currentTab);
+        });
+    });
 
-// Load Content
+    // Filter buttons
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            currentFilter = btn.dataset.filter;
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            renderContent();
+        });
+    });
+
+    // Search
+    const searchInput = document.getElementById('searchInput');
+    if (searchInput) {
+        searchInput.addEventListener('input', (e) => {
+            const query = e.target.value.toLowerCase();
+            const data = getCurrentData();
+            const filtered = data.filter(item =>
+                item.name.toLowerCase().includes(query) ||
+                item.description.toLowerCase().includes(query) ||
+                item.author.toLowerCase().includes(query)
+            );
+            renderFilteredContent(applyFilter(filtered));
+        });
+    }
+}
+
+// Load Content from local JSON files
 async function loadAllContent() {
     showLoading(true);
 
     try {
-        const [mods, maps, prefabs] = await Promise.all([
-            fetch(`${API_URL}/api/mods`).then(r => r.json()),
-            fetch(`${API_URL}/api/maps`).then(r => r.json()),
-            fetch(`${API_URL}/api/prefabs`).then(r => r.json())
-        ]);
+        // Try multiple paths to find the data directory
+        let dataPath;
 
-        allMods = mods;
-        allMaps = maps;
-        allPrefabs = prefabs;
+        // Path 1: Development mode (from src/scripts/)
+        const devPath = path.join(__dirname, '..', 'data');
+
+        // Path 2: Production mode (from app root)
+        const prodPath = path.join(process.cwd(), 'src', 'data');
+
+        // Path 3: Alternative production path
+        const altPath = path.join(process.resourcesPath, 'app', 'src', 'data');
+
+        // Check which path exists
+        if (fs.existsSync(devPath)) {
+            dataPath = devPath;
+        } else if (fs.existsSync(prodPath)) {
+            dataPath = prodPath;
+        } else if (fs.existsSync(altPath)) {
+            dataPath = altPath;
+        } else {
+            throw new Error('Could not find data directory');
+        }
+
+        // Read JSON files
+        const modsData = fs.readFileSync(path.join(dataPath, 'mods.json'), 'utf8');
+        const mapsData = fs.readFileSync(path.join(dataPath, 'maps.json'), 'utf8');
+        const prefabsData = fs.readFileSync(path.join(dataPath, 'prefabs.json'), 'utf8');
+
+        allMods = JSON.parse(modsData);
+        allMaps = JSON.parse(mapsData);
+        allPrefabs = JSON.parse(prefabsData);
 
         renderContent();
+        updateStats();
     } catch (error) {
         console.error('Error loading content:', error);
-        showError('فشل تحميل المحتوى');
+        showError('فشل تحميل المحتوى: ' + error.message);
     } finally {
         showLoading(false);
     }
@@ -62,6 +127,21 @@ function applyFilter(data) {
         default:
             return data;
     }
+}
+
+// Switch Tab
+function switchTab(tab) {
+    // Update tab buttons
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.tab === tab);
+    });
+
+    // Update tab content
+    document.querySelectorAll('.tab-content').forEach(content => {
+        content.classList.toggle('active', content.id === `${tab}-tab`);
+    });
+
+    renderContent();
 }
 
 // Render Content
@@ -132,37 +212,34 @@ function createContentCard(item) {
 }
 
 // Handle Download
-async function handleDownload(id) {
+function handleDownload(id) {
     const item = getCurrentData().find(i => i.id === id);
 
     if (!item) return;
 
     try {
-        // Increment download count
-        await fetch(`${API_URL}/api/download/${currentTab}/${id}`, {
-            method: 'POST'
-        });
-
-        // Open download URL
+        // Open download URL in external browser
         if (item.downloadUrl) {
-            require('electron').shell.openExternal(item.downloadUrl);
+            shell.openExternal(item.downloadUrl);
+            showNotification(`تم فتح رابط تحميل ${item.name}`);
+        } else {
+            showError('رابط التحميل غير متوفر');
         }
-
-        // Reload to update download count
-        await loadAllContent();
-
-        showNotification(`تم بدء تحميل ${item.name}`);
     } catch (error) {
         console.error('Download error:', error);
-        showError('فشل التحميل');
+        showError('فشل فتح رابط التحميل');
     }
 }
 
 // Update Stats
 function updateStats() {
-    document.getElementById('totalMods').textContent = allMods.length;
-    document.getElementById('totalMaps').textContent = allMaps.length;
-    document.getElementById('totalPrefabs').textContent = allPrefabs.length;
+    const totalModsEl = document.getElementById('totalMods');
+    const totalMapsEl = document.getElementById('totalMaps');
+    const totalPrefabsEl = document.getElementById('totalPrefabs');
+
+    if (totalModsEl) totalModsEl.textContent = allMods.length;
+    if (totalMapsEl) totalMapsEl.textContent = allMaps.length;
+    if (totalPrefabsEl) totalPrefabsEl.textContent = allPrefabs.length;
 }
 
 // Utility Functions
@@ -176,7 +253,7 @@ function getContentTypeLabel() {
 }
 
 function formatDate(dateString) {
-    if (!dateString) return 'غير معروف';
+    if (!dateString || dateString === '?') return 'غير معروف';
     const date = new Date(dateString);
     const now = new Date();
     const diffTime = Math.abs(now - date);
@@ -190,17 +267,64 @@ function formatDate(dateString) {
 }
 
 function showLoading(show) {
-    loadingOverlay.classList.toggle('active', show);
+    if (loadingOverlay) {
+        loadingOverlay.classList.toggle('active', show);
+    }
 }
 
 function showNotification(message) {
-    // Simple notification - you can enhance this
-    alert(message);
+    // Simple notification
+    const notification = document.createElement('div');
+    notification.className = 'notification';
+    notification.textContent = message;
+    notification.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: #10b981;
+        color: white;
+        padding: 15px 25px;
+        border-radius: 8px;
+        z-index: 10000;
+        animation: slideIn 0.3s ease;
+    `;
+    document.body.appendChild(notification);
+    setTimeout(() => {
+        notification.style.animation = 'slideOut 0.3s ease';
+        setTimeout(() => notification.remove(), 300);
+    }, 3000);
 }
 
 function showError(message) {
-    alert('خطأ: ' + message);
+    const notification = document.createElement('div');
+    notification.className = 'notification error';
+    notification.textContent = 'خطأ: ' + message;
+    notification.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: #ef4444;
+        color: white;
+        padding: 15px 25px;
+        border-radius: 8px;
+        z-index: 10000;
+        animation: slideIn 0.3s ease;
+    `;
+    document.body.appendChild(notification);
+    setTimeout(() => {
+        notification.style.animation = 'slideOut 0.3s ease';
+        setTimeout(() => notification.remove(), 300);
+    }, 3000);
 }
 
-// Export for admin panel
+// Admin Panel Functions (kept for compatibility)
+function setupAdminShortcut() {
+    // Removed admin functionality
+}
+
+function setupAdminTrigger() {
+    // Removed admin functionality
+}
+
+// Export for potential future use
 window.reloadContent = loadAllContent;
