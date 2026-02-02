@@ -3,7 +3,7 @@ const io = require('socket.io-client');
 
 // Initialize Socket.IO connection for online tracking
 // API Configuration
-const API_URL = 'https://hymods-backend.onrender.com'; // CHANGE THIS AFTER DEPLOYMENT
+const API_URL = 'https://hymods-launcher.onrender.com'; // CHANGE THIS AFTER DEPLOYMENT
 const socket = io(API_URL);
 
 // ...
