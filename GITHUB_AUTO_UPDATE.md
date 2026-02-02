@@ -27,7 +27,7 @@
 
 ```bash
 git init
-git add .
+git  ad.
 git commit -m "First release"
 git branch -M main
 git remote add origin https://github.com/اسم_المستخدم/اسم_المستودع.git

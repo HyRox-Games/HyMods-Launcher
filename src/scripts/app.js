@@ -66,26 +66,39 @@ async function loadAllContent() {
 
     try {
         // Try multiple paths to find the data directory
-        let dataPath;
+        let dataPath = null;
+        const pathsToCheck = [
+            path.join(__dirname, '..', 'data'), // Relative to script: src/data
+            path.join(process.cwd(), 'src', 'data'), // Relative to CWD
+            path.join(process.resourcesPath, 'app', 'src', 'data'), // Packaged standard
+            path.join(process.resourcesPath, 'src', 'data'), // Packaged alternative
+            path.resolve(__dirname, '../../src/data') // Resolve from potential built structure
+        ];
 
-        // Path 1: Development mode (from src/scripts/)
-        const devPath = path.join(__dirname, '..', 'data');
+        const triedPaths = [];
 
-        // Path 2: Production mode (from app root)
-        const prodPath = path.join(process.cwd(), 'src', 'data');
+        for (const p of pathsToCheck) {
+            try {
+                if (fs.existsSync(p)) {
+                    console.log(`Found data directory at: ${p}`);
+                    dataPath = p;
+                    break;
+                }
+                triedPaths.push(p);
+            } catch (e) {
+                console.error(`Error checking path ${p}:`, e);
+                triedPaths.push(`${p} (${e.message})`);
+            }
+        }
 
-        // Path 3: Alternative production path
-        const altPath = path.join(process.resourcesPath, 'app', 'src', 'data');
-
-        // Check which path exists
-        if (fs.existsSync(devPath)) {
-            dataPath = devPath;
-        } else if (fs.existsSync(prodPath)) {
-            dataPath = prodPath;
-        } else if (fs.existsSync(altPath)) {
-            dataPath = altPath;
-        } else {
-            throw new Error('Could not find data directory');
+        if (!dataPath) {
+            console.error('Data directory search failed. Checked:', triedPaths);
+            console.log('Environment info:', {
+                __dirname,
+                cwd: process.cwd(),
+                resourcesPath: process.resourcesPath
+            });
+            throw new Error(`Could not find data directory.\nChecked paths:\n${triedPaths.join('\n')}`);
         }
 
         // Read JSON files
