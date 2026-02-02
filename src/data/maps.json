@@ -1,0 +1,24 @@
+[
+    {
+        "id": "1",
+        "name": "Fantasy Kingdom",
+        "description": "مملكة خيالية ضخمة مع قلاع وقرى ومناطق استكشاف متنوعة",
+        "version": "1.0.0",
+        "author": "MapBuilder Pro",
+        "downloadUrl": "https://example.com/downloads/fantasy-kingdom.zip",
+        "imageUrl": "",
+        "uploadedAt": "2026-01-25T16:00:00Z",
+        "downloads": 756
+    },
+    {
+        "id": "2",
+        "name": "Underwater City",
+        "description": "مدينة تحت الماء مذهلة مع هياكل فريدة ومخلوقات بحرية",
+        "version": "2.3.0",
+        "author": "AquaDesign",
+        "downloadUrl": "https://example.com/downloads/underwater-city.zip",
+        "imageUrl": "",
+        "uploadedAt": "2026-01-29T11:20:00Z",
+        "downloads": 1234
+    }
+]

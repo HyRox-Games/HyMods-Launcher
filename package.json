@@ -1,0 +1,63 @@
+{
+  "name": "hytale-mods-launcher",
+  "version": "1.0.0",
+  "description": "Professional Hytale Mods Launcher",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder",
+    "build:win": "electron-builder --win",
+    "build:mac": "electron-builder --mac",
+    "build:linux": "electron-builder --linux"
+  },
+  "keywords": [
+    "hytale",
+    "mods",
+    "launcher",
+    "gaming"
+  ],
+  "author": "HyMods",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^28.0.0",
+    "electron-builder": "^24.9.1"
+  },
+  "dependencies": {
+    "electron-updater": "^6.7.3",
+    "express": "^4.18.2",
+    "socket.io": "^4.6.1",
+    "socket.io-client": "^4.6.1"
+  },
+  "build": {
+    "appId": "com.hymods.launcher",
+    "productName": "HyMods Launcher",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "**/*",
+      "!**/*.md",
+      "!.git",
+      "!dist"
+    ],
+    "win": {
+      "target": "nsis",
+      "icon": "assets/icons/icon.png"
+    },
+    "mac": {
+      "target": "dmg",
+      "icon": "assets/icons/icon.png"
+    },
+    "linux": {
+      "target": "AppImage",
+      "icon": "assets/icons/icon.png"
+    },
+    "publish": [
+      {
+        "provider": "github",
+        "owner": "YOUR_GITHUB_USERNAME",
+        "repo": "YOUR_REPO_NAME"
+      }
+    ]
+  }
+}

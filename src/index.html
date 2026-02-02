@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HyMods Launcher - Hytale Mods</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <div class="logo-icon" id="adminTrigger" title="اضغط 3 مرات للوصول السريع">🎮</div>
+                <h1>HyMods Launcher</h1>
+            </div>
+            <div class="header-right">
+                <div class="online-counter">
+                    <div class="online-indicator"></div>
+                    <span id="onlineCount">0</span>
+                    <span class="online-label">متصل</span>
+                </div>
+                <div class="search-container">
+                    <input type="text" id="searchInput" placeholder="ابحث عن المودات، الخرائط، أو البريفابس..."
+                        class="search-input">
+                    <span class="search-icon">🔍</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation Tabs -->
+    <nav class="nav-tabs">
+        <button class="tab-btn active" data-tab="mods">
+            <span class="tab-icon">⚡</span>
+            <span>المودات</span>
+        </button>
+        <button class="tab-btn" data-tab="maps">
+            <span class="tab-icon">🗺️</span>
+            <span>الخرائط</span>
+        </button>
+        <button class="tab-btn" data-tab="prefabs">
+            <span class="tab-icon">🏗️</span>
+            <span>البريفابس</span>
+        </button>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Mods Tab -->
+        <div class="tab-content active" id="mods-tab">
+            <div class="content-header">
+                <h2>المودات المتاحة</h2>
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-filter="all">الكل</button>
+                    <button class="filter-btn" data-filter="popular">الأكثر شعبية</button>
+                    <button class="filter-btn" data-filter="recent">الأحدث</button>
+                </div>
+            </div>
+            <div class="content-grid" id="mods-grid">
+                <!-- Mods will be loaded here -->
+            </div>
+        </div>
+
+        <!-- Maps Tab -->
+        <div class="tab-content" id="maps-tab">
+            <div class="content-header">
+                <h2>الخرائط المتاحة</h2>
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-filter="all">الكل</button>
+                    <button class="filter-btn" data-filter="popular">الأكثر شعبية</button>
+                    <button class="filter-btn" data-filter="recent">الأحدث</button>
+                </div>
+            </div>
+            <div class="content-grid" id="maps-grid">
+                <!-- Maps will be loaded here -->
+            </div>
+        </div>
+
+        <!-- Prefabs Tab -->
+        <div class="tab-content" id="prefabs-tab">
+            <div class="content-header">
+                <h2>البريفابس المتاحة</h2>
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-filter="all">الكل</button>
+                    <button class="filter-btn" data-filter="popular">الأكثر شعبية</button>
+                    <button class="filter-btn" data-filter="recent">الأحدث</button>
+                </div>
+            </div>
+            <div class="content-grid" id="prefabs-grid">
+                <!-- Prefabs will be loaded here -->
+            </div>
+        </div>
+    </main>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loader"></div>
+        <p>جاري التحميل...</p>
+    </div>
+
+    <script src="https://cdn.socket.io/4.6.1/socket.io.min.js"></script>
+    <script src="scripts/app.js"></script>
+</body>
+
+</html>

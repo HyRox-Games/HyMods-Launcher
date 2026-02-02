@@ -1,0 +1,35 @@
+[
+  {
+    "id": "1",
+    "name": "Enhanced Graphics Mod",
+    "description": "تحسين الرسومات والإضاءة في Hytale مع تأثيرات بصرية مذهلة وظلال واقعية",
+    "version": "2.1.0",
+    "author": "HyMods Team",
+    "downloadUrl": "https://example.com/downloads/enhanced-graphics.zip",
+    "imageUrl": "",
+    "uploadedAt": "2026-01-28T10:00:00Z",
+    "downloads": 1547
+  },
+  {
+    "id": "2",
+    "name": "Advanced Combat System",
+    "description": "نظام قتال متقدم مع مهارات جديدة وأسلحة إضافية وتحسينات في الميكانيكا القتالية",
+    "version": "1.5.2",
+    "author": "CombatMaster",
+    "downloadUrl": "https://example.com/downloads/combat-system.zip",
+    "imageUrl": "",
+    "uploadedAt": "2026-01-30T14:30:00Z",
+    "downloads": 892
+  },
+  {
+    "id": "3",
+    "name": "Magic & Spells Expansion",
+    "description": "إضافة أكثر من 50 تعويذة سحرية جديدة مع نظام سحر متطور وتأثيرات بصرية رائعة",
+    "version": "3.0.1",
+    "author": "MagicCraft",
+    "downloadUrl": "https://example.com/downloads/magic-expansion.zip",
+    "imageUrl": "",
+    "uploadedAt": "2026-02-01T09:15:00Z",
+    "downloads": 2104
+  }
+]
