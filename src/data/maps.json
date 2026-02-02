@@ -20,5 +20,16 @@
         "imageUrl": "https://image2url.com/r2/default/images/1770020706957-8a4262c4-f8e6-4d22-a382-80de90c20445.png",
         "uploadedAt": "?",
         "downloads": 5677
+    },
+    {
+        "id": "3",
+        "name": "All Memories Unlocked",
+        "description": "Start with all memories unlocked by default! The world still randomly generates every start, no other features affected.",
+        "version": "1.1.1",
+        "author": "HyMods Team",
+        "downloadUrl": "https://drive.google.com/file/d/1htCxoz9uAZbTFUDe2fTcY3dcWn1YCqVY/view?usp=sharing",
+        "imageUrl": "https://image2url.com/r2/default/images/1770067380505-7ceb3a34-bdf8-46bd-811e-193d8b95600e.png",
+        "uploadedAt": "?",
+        "downloads": 567767
     }
 ]

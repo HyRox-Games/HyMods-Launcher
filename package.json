@@ -1,6 +1,6 @@
 {
   "name": "hytale-mods-launcher",
-  "version": "1.6.5",
+  "version": "1.6.7",
   "description": "Simple Hytale Mods Launcher",
   "main": "main.js",
   "scripts": {
