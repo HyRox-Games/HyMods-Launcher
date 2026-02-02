@@ -53,10 +53,6 @@ autoUpdater.logger = require('electron-log');
 autoUpdater.logger.transports.file.level = 'info';
 autoUpdater.autoDownload = false; // Let user decide or auto-download
 
-// IPC Handlers for Content
-ipcMain.handle('content:get-all', async (event, type) => {
-    return await getAllContent(type);
-});
 
 // Auto-updater events
 autoUpdater.on('update-available', () => {
