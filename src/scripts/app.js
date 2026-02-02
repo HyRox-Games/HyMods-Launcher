@@ -68,6 +68,7 @@ async function loadAllContent() {
         // Try multiple paths to find the data directory
         let dataPath = null;
         const pathsToCheck = [
+            path.join(process.resourcesPath, 'data'), // Top priority: Extra resources
             path.join(__dirname, '..', 'data'), // Relative to script: src/data
             path.join(process.cwd(), 'src', 'data'), // Relative to CWD
             path.join(process.resourcesPath, 'app', 'src', 'data'), // Packaged standard
