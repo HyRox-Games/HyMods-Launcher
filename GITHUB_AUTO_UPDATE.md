@@ -26,7 +26,7 @@
 افتح موجه الأوامر (Terminal) في مجلد المشروع ونفذ:
 
 ```bash
-initgit 
+git init
 git add .
 git commit -m "First release"
 git branch -M main

@@ -42,5 +42,16 @@
     "imageUrl": "https://image2url.com/r2/default/images/1770020249270-bee65f1d-7a6a-4fc8-b4ae-da5462761757.png",
     "uploadedAt": "?",
     "downloads": 29
+  },
+  {
+    "id": "5",
+    "name": "Spellbook",
+    "description": "The Spellbook mod adds a magical spellcasting system to Hytale, allowing players to learn, customize, and cast spells using a spellbook interface. Features include spell creation, mana management, and visual effects.",
+    "version": "1.3.3",
+    "author": "HyMods Team",
+    "downloadUrl": "https://drive.google.com/file/d/1U533gN48tcwiH5HGQq5S8f24hNNdWeeV/view?usp=sharing",
+    "imageUrl": "https://image2url.com/r2/default/images/1770065075916-5b57e66a-fe6f-40bd-baf3-7f846fd0bc1d.png",
+    "uploadedAt": "?",
+    "downloads": 543
   }
 ]
