@@ -31,5 +31,16 @@
         "imageUrl": "https://image2url.com/r2/default/images/1770067380505-7ceb3a34-bdf8-46bd-811e-193d8b95600e.png",
         "uploadedAt": "?",
         "downloads": 567767
+    },
+    {
+        "id": "4",
+        "name": "Lucky Block Battle Race",
+        "description": "A Lucky Block map: destroy the lucky blocks and get stronger to face your friends.",
+        "version": "1.0.0",
+        "author": "HyMods Team",
+        "downloadUrl": "https://drive.google.com/file/d/1M6HXTFwfwTMVp1e5_eO-Om_pDFrzL35N/view?usp=sharing",
+        "imageUrl": "https://image2url.com/r2/default/images/1770100655689-1d2edd70-ebe6-4f8f-9fd3-b8ed432f46c1.png",
+        "uploadedAt": "?",
+        "downloads": 5677
     }
 ]

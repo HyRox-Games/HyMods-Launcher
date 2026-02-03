@@ -24,6 +24,11 @@
                         class="search-input">
                     <span class="search-icon">🔍</span>
                 </div>
+                <div class="social-menu-container">
+                    <button class="icon-btn" id="socialMenuBtn" title="روابط التواصل الاجتماعي">
+                        🔗
+                    </button>
+                </div>
             </div>
         </div>
     </header>
@@ -41,6 +46,10 @@
         <button class="tab-btn" data-tab="prefabs">
             <span class="tab-icon">🏗️</span>
             <span>البريفابس</span>
+        </button>
+        <button class="tab-btn" data-tab="modpacks">
+            <span class="tab-icon">📦</span>
+            <span>المودباك</span>
         </button>
     </nav>
 
@@ -90,6 +99,21 @@
                 <!-- Prefabs will be loaded here -->
             </div>
         </div>
+
+        <!-- Modpacks Tab -->
+        <div class="tab-content" id="modpacks-tab">
+            <div class="content-header">
+                <h2>المودباك المتاحة</h2>
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-filter="all">الكل</button>
+                    <button class="filter-btn" data-filter="popular">الأكثر شعبية</button>
+                    <button class="filter-btn" data-filter="recent">الأحدث</button>
+                </div>
+            </div>
+            <div class="content-grid" id="modpacks-grid">
+                <!-- Modpacks will be loaded here -->
+            </div>
+        </div>
     </main>
 
     <!-- Loading Overlay -->
@@ -107,6 +131,30 @@
                 <div class="progress-bar"></div>
             </div>
             <button id="restartBtn" class="btn primary-btn hidden">إعادة التشغيل والتثبيت</button>
+        </div>
+    </div>
+
+    <!-- Social Media Overlay -->
+    <div id="socialOverlay" class="social-overlay">
+        <button class="close-overlay-btn" id="closeSocialBtn">×</button>
+        <div class="social-content">
+            <h2>تابعنا على وسائل التواصل</h2>
+            <div class="social-links-grid">
+                <a href="#" class="social-card" data-url="https://discord.gg/4zhHEw3Bdu">
+                    <div class="social-icon-wrapper discord">
+                        <span class="social-icon-large">💬</span>
+                    </div>
+                    <h3>Discord</h3>
+                    <p>انضم لمجتمعنا</p>
+                </a>
+                <a href="#" class="social-card" data-url="https://www.youtube.com/@HyRox18">
+                    <div class="social-icon-wrapper youtube">
+                        <span class="social-icon-large">📺</span>
+                    </div>
+                    <h3>YouTube</h3>
+                    <p>شروحات وفيديوهات</p>
+                </a>
+            </div>
         </div>
     </div>
 

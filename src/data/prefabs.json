@@ -9,5 +9,27 @@
         "imageUrl": "https://image2url.com/r2/default/images/1770020974772-9d637319-734e-47cd-8013-4e344b01f7d1.png",
         "uploadedAt": "?",
         "downloads": 3456
+    },
+    {
+        "id": "2",
+        "name": "Medieval Tavern House",
+        "description": "This prefab features a fully custom-made medieval tavern house, ready to use in any project! The main building measures 20×25x19 blocks and is crafted from sturdy oak blocks, giving it an authentic medieval look. It is perfect for adding character and functionality to your scenes. Ideal for games, Hytale builds, or any creative project needing a charming tavern centerpiece.",
+        "version": "0.0.1",
+        "author": "HyMods Team",
+        "downloadUrl": "https://drive.google.com/file/d/1ib0WR1WD7_QuRjlERZnlz7ztULDVjQaQ/view?usp=sharing",
+        "imageUrl": "https://image2url.com/r2/default/images/1770100928856-eb116c19-25c3-446b-a340-4e0eb96b7cb2.png",
+        "uploadedAt": "?",
+        "downloads": 39346
+    },
+    {
+        "id": "3",
+        "name": "Large House 1",
+        "description": "Large 2 Story House Features -Multiple Rooms -Water Feature -Lookout Tower -Basement To load this in your world go to",
+        "version": "0.0.1",
+        "author": "HyMods Team",
+        "downloadUrl": "https://drive.google.com/file/d/1_c2YebLnwBhyRVjaDwePCQrz5wyaTnwJ/view?usp=sharing",
+        "imageUrl": "https://image2url.com/r2/default/images/1770101177299-36c4403e-db0d-4fc4-b695-adf52199b1ec.png",
+        "uploadedAt": "?",
+        "downloads": 9876
     }
 ]

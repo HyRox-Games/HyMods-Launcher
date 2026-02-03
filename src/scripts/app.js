@@ -6,6 +6,7 @@ const path = require('path');
 let allMods = [];
 let allMaps = [];
 let allPrefabs = [];
+let allModpacks = [];
 
 let currentTab = 'mods';
 let currentFilter = 'all';
@@ -43,10 +44,53 @@ document.addEventListener('DOMContentLoaded', async () => {
     });
 
     setupEventListeners();
+    setupSocialMediaMenu();
     await loadAllContent();
     setupAdminShortcut();
     setupAdminTrigger();
 });
+
+// Setup Social Media Overlay
+function setupSocialMediaMenu() {
+    const socialBtn = document.getElementById('socialMenuBtn');
+    const overlay = document.getElementById('socialOverlay');
+    const closeBtn = document.getElementById('closeSocialBtn');
+
+    if (socialBtn && overlay) {
+        // Open overlay
+        socialBtn.addEventListener('click', () => {
+            overlay.classList.add('active');
+        });
+
+        // Close overlay
+        if (closeBtn) {
+            closeBtn.addEventListener('click', () => {
+                overlay.classList.remove('active');
+            });
+        }
+
+        // Close on outside click (optional, but good for overlays)
+        overlay.addEventListener('click', (e) => {
+            if (e.target === overlay) {
+                overlay.classList.remove('active');
+            }
+        });
+
+        // Handle links
+        overlay.querySelectorAll('.social-card').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const url = link.dataset.url;
+                if (url) {
+                    shell.openExternal(url);
+                    // blur overlay slightly or do nothing, keeping it open might be better or close it
+                    // user preference: usually keeping it open or closing. Let's close it for now.
+                    overlay.classList.remove('active');
+                }
+            });
+        });
+    }
+}
 
 // Setup Event Listeners
 function setupEventListeners() {
@@ -131,9 +175,15 @@ async function loadAllContent() {
         const mapsData = fs.readFileSync(path.join(dataPath, 'maps.json'), 'utf8');
         const prefabsData = fs.readFileSync(path.join(dataPath, 'prefabs.json'), 'utf8');
 
+        let modpacksData = '[]';
+        if (fs.existsSync(path.join(dataPath, 'modpacks.json'))) {
+            modpacksData = fs.readFileSync(path.join(dataPath, 'modpacks.json'), 'utf8');
+        }
+
         allMods = JSON.parse(modsData);
         allMaps = JSON.parse(mapsData);
         allPrefabs = JSON.parse(prefabsData);
+        allModpacks = JSON.parse(modpacksData);
 
         renderContent();
         updateStats();
@@ -151,6 +201,7 @@ function getCurrentData() {
         case 'mods': return allMods;
         case 'maps': return allMaps;
         case 'prefabs': return allPrefabs;
+        case 'modpacks': return allModpacks;
         default: return [];
     }
 }
@@ -278,6 +329,10 @@ function updateStats() {
     if (totalModsEl) totalModsEl.textContent = allMods.length;
     if (totalMapsEl) totalMapsEl.textContent = allMaps.length;
     if (totalPrefabsEl) totalPrefabsEl.textContent = allPrefabs.length;
+
+    // Optional: Stats for modpacks if element exists
+    const totalModpacksEl = document.getElementById('totalModpacks');
+    if (totalModpacksEl) totalModpacksEl.textContent = allModpacks.length;
 }
 
 // Utility Functions
@@ -286,6 +341,7 @@ function getContentTypeLabel() {
         case 'mods': return 'مودات';
         case 'maps': return 'خرائط';
         case 'prefabs': return 'بريفابس';
+        case 'modpacks': return 'مودباك';
         default: return 'محتوى';
     }
 }
