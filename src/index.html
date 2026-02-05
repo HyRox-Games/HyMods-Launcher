@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="styles/main.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 
 <body>
@@ -15,18 +17,22 @@
     <header class="header">
         <div class="header-content">
             <div class="logo">
-                <div class="logo-icon" id="adminTrigger" title="اضغط 3 مرات للوصول السريع">🎮</div>
+                <div class="logo-icon" id="adminTrigger" title="اضغط 3 مرات للوصول السريع">
+                    <i data-lucide="gamepad-2"></i>
+                </div>
                 <h1>HyMods Launcher</h1>
             </div>
             <div class="header-right">
                 <div class="search-container">
                     <input type="text" id="searchInput" placeholder="ابحث عن المودات، الخرائط، أو البريفابس..."
                         class="search-input">
-                    <span class="search-icon">🔍</span>
+                    <span class="search-icon">
+                        <i data-lucide="search"></i>
+                    </span>
                 </div>
                 <div class="social-menu-container">
                     <button class="icon-btn" id="socialMenuBtn" title="روابط التواصل الاجتماعي">
-                        🔗
+                        <i data-lucide="share-2"></i>
                     </button>
                 </div>
             </div>
@@ -36,19 +42,19 @@
     <!-- Navigation Tabs -->
     <nav class="nav-tabs">
         <button class="tab-btn active" data-tab="mods">
-            <span class="tab-icon">⚡</span>
+            <span class="tab-icon"><i data-lucide="zap"></i></span>
             <span>المودات</span>
         </button>
         <button class="tab-btn" data-tab="maps">
-            <span class="tab-icon">🗺️</span>
+            <span class="tab-icon"><i data-lucide="map"></i></span>
             <span>الخرائط</span>
         </button>
         <button class="tab-btn" data-tab="prefabs">
-            <span class="tab-icon">🏗️</span>
+            <span class="tab-icon"><i data-lucide="blocks"></i></span>
             <span>البريفابس</span>
         </button>
         <button class="tab-btn" data-tab="modpacks">
-            <span class="tab-icon">📦</span>
+            <span class="tab-icon"><i data-lucide="package"></i></span>
             <span>المودباك</span>
         </button>
     </nav>
@@ -142,14 +148,14 @@
             <div class="social-links-grid">
                 <a href="#" class="social-card" data-url="https://discord.gg/4zhHEw3Bdu">
                     <div class="social-icon-wrapper discord">
-                        <span class="social-icon-large">💬</span>
+                        <i data-lucide="message-circle"></i>
                     </div>
                     <h3>Discord</h3>
                     <p>انضم لمجتمعنا</p>
                 </a>
                 <a href="#" class="social-card" data-url="https://www.youtube.com/@HyRox18">
                     <div class="social-icon-wrapper youtube">
-                        <span class="social-icon-large">📺</span>
+                        <i data-lucide="youtube"></i>
                     </div>
                     <h3>YouTube</h3>
                     <p>شروحات وفيديوهات</p>
@@ -159,6 +165,10 @@
     </div>
 
     <script src="scripts/app.js"></script>
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+    </script>
 </body>
 
 </html>
