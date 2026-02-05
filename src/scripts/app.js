@@ -30,12 +30,21 @@ document.addEventListener('DOMContentLoaded', async () => {
     // Setup Update Listeners
     ipcRenderer.on('update_available', () => {
         updateModal.classList.remove('hidden');
+        document.getElementById('updateProgress').classList.remove('hidden');
         updateMessage.textContent = 'جاري تحميل التحديث الجديد...';
         restartBtn.classList.add('hidden');
     });
 
+    ipcRenderer.on('update_progress', (event, progress) => {
+        const progressBar = document.querySelector('.progress-bar');
+        if (progressBar) {
+            progressBar.style.width = `${progress}%`;
+        }
+    });
+
     ipcRenderer.on('update_downloaded', () => {
         updateMessage.textContent = 'تم تحميل التحديث بنجاح. يجب إعادة التشغيل لتثبيت التحديث.';
+        document.getElementById('updateProgress').classList.add('hidden');
         restartBtn.classList.remove('hidden');
     });
 

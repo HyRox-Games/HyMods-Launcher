@@ -54,14 +54,18 @@ const { autoUpdater } = require('electron-updater');
 // Configure autoUpdater
 autoUpdater.logger = require('electron-log');
 autoUpdater.logger.transports.file.level = 'info';
-autoUpdater.autoDownload = false;
+autoUpdater.autoDownload = true;
 
 // Auto-updater events
 autoUpdater.on('update-available', () => {
     if (mainWindow) {
         mainWindow.webContents.send('update_available');
-        // Automatically start downloading
-        autoUpdater.downloadUpdate();
+    }
+});
+
+autoUpdater.on('download-progress', (progressObj) => {
+    if (mainWindow) {
+        mainWindow.webContents.send('update_progress', progressObj.percent);
     }
 });
 
