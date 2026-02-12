@@ -8,7 +8,7 @@
     "downloadUrl": "https://drive.google.com/file/d/1M0KAqLpM1-8NNmEl4ZAzFUnzEBHkftJj/view?usp=sharing",
     "imageUrl": "https://image2url.com/r2/default/images/1770019225265-94b5d3d0-bed3-43e6-9212-bedef3df0da4.png",
     "uploadedAt": "?",
-    "downloads": 100
+    "downloads": 505313
   },
   {
     "id": "2",
@@ -19,7 +19,7 @@
     "downloadUrl": "https://drive.google.com/file/d/1ejJbEYprH65KnqhSZkpK1a_vdVbwaa7p/view?usp=sharing",
     "imageUrl": "https://image2url.com/r2/default/images/1770019692096-55227938-439b-4099-a213-90980bc6ebd7.png",
     "uploadedAt": "?",
-    "downloads": 100
+    "downloads": 46936
   },
   {
     "id": "3",
@@ -30,7 +30,7 @@
     "downloadUrl": "https://drive.google.com/file/d/1G69cPyn-WGq8jj92iHeYikOYPELGtaZ2/view?usp=sharing",
     "imageUrl": "https://image2url.com/r2/default/images/1770019929605-2228d60d-06b8-47e5-b7a4-1e6c8e3483fa.png",
     "uploadedAt": "?",
-    "downloads": 2104
+    "downloads": 21989
   },
   {
     "id": "4",
@@ -41,7 +41,8 @@
     "downloadUrl": "https://drive.google.com/file/d/1hul6s1eLHHli4BhjQiO75Z3vvqeoLQNj/view?usp=sharing",
     "imageUrl": "https://image2url.com/r2/default/images/1770020249270-bee65f1d-7a6a-4fc8-b4ae-da5462761757.png",
     "uploadedAt": "?",
-    "downloads": 29
+    "downloads": 281663
+
   },
   {
     "id": "5",
@@ -52,6 +53,94 @@
     "downloadUrl": "https://drive.google.com/file/d/1U533gN48tcwiH5HGQq5S8f24hNNdWeeV/view?usp=sharing",
     "imageUrl": "https://image2url.com/r2/default/images/1770065075916-5b57e66a-fe6f-40bd-baf3-7f846fd0bc1d.png",
     "uploadedAt": "?",
-    "downloads": 543
+    "downloads": 182802
+  },
+  {
+    "id": "6",
+    "name": "Lucky Mining",
+    "description": "Get more ores from mining, the more you mine in a row, the more ores you get.",
+    "version": "1.0.4",
+    "author": "HyMods Team",
+    "downloadUrl": "https://drive.google.com/file/d/1WSmGINWbjh4B6PHS0s3N9kt4DvzObmAo/view?usp=sharing",
+    "imageUrl": "https://image2url.com/r2/default/images/1770901487278-63f1b2ea-95ab-4ab5-b485-95cb15c9d40d.png",
+    "uploadedAt": "?",
+    "downloads": 181636
+  },
+  {
+    "id": "7",
+    "name": "Overstacked",
+    "description": "The Overstacked mod increases the max stack size of several commonly used items to be higher. It also offers a powerful config system that allows you to modify the max stack size of any item in the game!",
+    "version": "0.0.4",
+    "author": "HyMods Team",
+    "downloadUrl": "https://drive.google.com/file/d/1FNAwWNpkS8MEuc9zDLneC7cGdgjO8nWX/view?usp=sharing",
+    "imageUrl": "https://image2url.com/r2/default/images/1770901722631-a7589d44-2b41-46c8-8cc1-6d61763897de.png",
+    "uploadedAt": "?",
+    "downloads": 211876
+  },
+  {
+    "id": "8",
+    "name": "Simply Trash",
+    "description": "Adds a trash can to easily destroy items!",
+    "version": "1.0.1",
+    "author": "HyMods Team",
+    "downloadUrl": "https://drive.google.com/file/d/1r3JutyUAMcmgPHbLPNOw5P81cV8lot2w/view?usp=sharing",
+    "imageUrl": "https://image2url.com/r2/default/images/1770902122678-7973daf8-d360-4cd1-a326-016b2d1cf41f.png",
+    "uploadedAt": "?",
+    "downloads": 193540
+  },
+  {
+    "id": "9",
+    "name": "Vein Mining",
+    "description": "Instantly mine connected ores and blocks by holding the Walk key (LEFT ALT) while breaking a single block.",
+    "version": "2.0.1",
+    "author": "HyMods Team",
+    "downloadUrl": "https://drive.google.com/file/d/1A753-qkvJYBl9V6OCzDT14WUOZZIotYX/view?usp=sharing",
+    "imageUrl": "https://image2url.com/r2/default/images/1770902529062-3124db35-8121-47f5-81cc-14faaba2c299.png",
+    "uploadedAt": "?",
+    "downloads": 186823
+  },
+  {
+    "id": "10",
+    "name": "MultipleHUD",
+    "description": "This simple mod allows modders to have mutliple HUD elements on the screen. Currently you can only have 1 Custom UI HUD Element on the screen but this mods adds a Custom UI HUD wrapper that adds multiple elements into one.",
+    "version": "1.0.4",
+    "author": "HyMods Team",
+    "downloadUrl": "https://drive.google.com/file/d/18CUthyUxPSShc9279KbKY8hmfzVvET74/view?usp=sharing",
+    "imageUrl": "https://image2url.com/r2/default/images/1770902777034-8be8ae17-2e56-40a7-a9fe-8630f10adc87.png",
+    "uploadedAt": "?",
+    "downloads": 170210
+  },
+  {
+    "id": "11",
+    "name": "MMO Skill Tree",
+    "description": "(Multiple Languages) MMO Skill Tree adds an RPG-style progression system where every action you take helps you grow stronger.",
+    "version": "0.9.0",
+    "author": "HyMods Team",
+    "downloadUrl": "https://www.curseforge.com/hytale/mods/mmo-skill-tree/download/7577989",
+    "imageUrl": "https://image2url.com/r2/default/images/1770902968490-725b65ab-1d08-45d7-82d1-85c9d8093832.jpg",
+    "uploadedAt": "?",
+    "downloads": 253465
+  },
+  {
+    "id": "12",
+    "name": "Aures - Horse Skins",
+    "description": "Adds a random variations for horses! Also slightly changes the model and animations of horses.",
+    "version": "1.9.0",
+    "author": "HyMods Team",
+    "downloadUrl": "https://www.curseforge.com/hytale/mods/aures-horse-skins/download/7569548",
+    "imageUrl": "https://image2url.com/r2/default/images/1770903074459-6c40ca46-e864-4760-93bd-226a3bfda128.png",
+    "uploadedAt": "?",
+    "downloads": 113159
+  },
+  {
+    "id": "13",
+    "name": "Gravestones",
+    "description": "The Gravestone mod keeps your hard earned loot safe when you die in Hytale!",
+    "version": "1.0.9",
+    "author": "HyMods Team",
+    "downloadUrl": "https://www.curseforge.com/hytale/mods/gravestones/download/7497865",
+    "imageUrl": "https://image2url.com/r2/default/images/1770903285099-1bddd00c-1e52-4aaf-8b56-7690c54b41bb.png",
+    "uploadedAt": "?",
+    "downloads": 83381
   }
 ]

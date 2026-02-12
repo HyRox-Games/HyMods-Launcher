@@ -31,5 +31,126 @@
         "imageUrl": "https://image2url.com/r2/default/images/1770101177299-36c4403e-db0d-4fc4-b695-adf52199b1ec.png",
         "uploadedAt": "?",
         "downloads": 9876
-    }
+    },
+    {
+    "id": "4",
+    "name": "Tavern of the Beginning",
+    "description": "Starter Tavern with 4 bedrooms and everything youll need to start an adventure in hytale with you and your friends.",
+    "version": "1.7.0",
+    "author": "HyMods Team",
+    "downloadUrl": "https://www.curseforge.com/hytale/prefabs/tavern-of-the-beginning/download/7484948",
+    "imageUrl": "https://image2url.com/r2/default/images/1770905197441-93cd7403-e846-4932-bb71-83bf106c0e9e.png",
+    "uploadedAt": "?",
+    "downloads": 1835
+  },
+  {
+    "id": "5",
+    "name": "Mystical Tower",
+    "description": "Mystical Wizard Tower for your magical adventure in Hytale",
+    "version": "1.0.0",
+    "author": "HyMods Team",
+    "downloadUrl": "https://www.curseforge.com/hytale/prefabs/mystical-tower/download/7497852",
+    "imageUrl": "https://image2url.com/r2/default/images/1770905321200-f7d15f0a-4222-4151-afe3-1f9f54e7db12.jpg",
+    "uploadedAt": "?",
+    "downloads": 911
+  },
+  {
+    "id": "6",
+    "name": "Cosy little Chicken Farm",
+    "description": "Cosy little Chicken farm Prefab",
+    "version": "1.6.7",
+    "author": "HyMods Team",
+    "downloadUrl": "https://www.curseforge.com/hytale/prefabs/cosy-little-chicken-farm/download/7489375",
+    "imageUrl": "https://image2url.com/r2/default/images/1770905398691-01ae97be-3c20-44ec-9e7e-a2ac054d5a5f.png",
+    "uploadedAt": "?",
+    "downloads": 719
+  },
+  {
+    "id": "7",
+    "name": "Cozy Cavern",
+    "description": "Cozy house I recreated from another block game. Its a nice starter house I have it in a forrest biome. tons of space for all crafting benches. Hope you like it.",
+    "version": "1.6.4",
+    "author": "HyMods Team",
+    "downloadUrl": "https://www.curseforge.com/hytale/prefabs/cozy-cavern/download/7499268",
+    "imageUrl": "https://image2url.com/r2/default/images/1770905881760-6c686c08-594c-4ecb-828e-e7ac18a01f65.jpg",
+    "uploadedAt": "?",
+    "downloads": 661
+  },
+  {
+    "id": "8",
+    "name": "Teleport HUB",
+    "description": "Prefab of a Thematic little Teleport HUB, useable as Spawn/HUB or just to quickly see where your teleports lead!",
+    "version": "2.3.5",
+    "author": "HyMods Team",
+    "downloadUrl": "https://www.curseforge.com/hytale/prefabs/teleport-hub/download/7472353",
+    "imageUrl": "https://image2url.com/r2/default/images/1770905999942-7acd1ab7-8596-4995-9b6e-cb633d0640ef.png",
+    "uploadedAt": "?",
+    "downloads": 603
+  },
+  {
+    "id": "9",
+    "name": "Large House 2",
+    "description": "Large 3 Story House",
+    "version": "1.4.4",
+    "author": "HyMods Team",
+    "downloadUrl": "https://www.curseforge.com/hytale/prefabs/large-house-2/download/7576346",
+    "imageUrl": "https://image2url.com/r2/default/images/1770906074548-f106293b-13a0-48fd-a2dd-1ac1a7a012d0.png",
+    "uploadedAt": "?",
+    "downloads": 664
+  },
+  {
+    "id": "10",
+    "name": "Cozy Barn with Coop and Storage",
+    "description": "Prefab for a small cozy Barn with 12 large chests and a chicken coop.",
+    "version": "4.3.6",
+    "author": "HyMods Team",
+    "downloadUrl": "https://www.curseforge.com/hytale/prefabs/cozy-barn-with-coop-and-storage/download/7519289",
+    "imageUrl": "https://image2url.com/r2/default/images/1770906170899-c663b4e2-dfc5-4538-91df-01dbb333941c.png",
+    "uploadedAt": "?",
+    "downloads": 547
+  },
+  {
+    "id": "11",
+    "name": "House Aetherluz",
+    "description": "House Neoclassical with Victorian influences",
+    "version": "2.4.7",
+    "author": "HyMods Team",
+    "downloadUrl": "https://www.curseforge.com/hytale/prefabs/house-aetherluz/download/7490670",
+    "imageUrl": "https://image2url.com/r2/default/images/1770906274240-e579d89b-0acd-40fa-a936-96b15c36573b.jpg",
+    "uploadedAt": "?",
+    "downloads": 429
+  },
+  {
+    "id": "12",
+    "name": "Varsugi's Guildhall",
+    "description": "Varsugi's Guildhall unfurnished",
+    "version": "3.6.8",
+    "author": "HyMods Team",
+    "downloadUrl": "https://www.curseforge.com/hytale/prefabs/varsugis-guildhall-unfurnished/download/7549700",
+    "imageUrl": "https://image2url.com/r2/default/images/1770906388276-41870f92-4d3c-402a-9888-5174aaf33900.png",
+    "uploadedAt": "?",
+    "downloads": 477
+  },
+  {
+    "id": "13",
+    "name": "Viking Longhouse",
+    "description": "A classic viking longhouse, the most important building of viking settlements. Its interior is fully decorated, with a great banquet, two internal balconies, and the jarl's bedroom and study. The prefab is 61 blocks long, 31 blocks wide and 26 blocks high.",
+    "version": "1.3.6",
+    "author": "HyMods Team",
+    "downloadUrl": "https://www.curseforge.com/hytale/prefabs/viking-longhouse/download/7530907",
+    "imageUrl": "https://image2url.com/r2/default/images/1770906483161-480e8ea6-8644-4de5-a365-cc49f273e891.png",
+    "uploadedAt": "?",
+    "downloads": 410
+  },
+  {
+    "id": "14",
+    "name": "Cozy Windmill Prefab",
+    "description": "Cozy Hytale Windmill Prefab",
+    "version": "3.7.4",
+    "author": "HyMods Team",
+    "downloadUrl": "https://www.curseforge.com/hytale/prefabs/cozy-windmill-prefab/download/7527628",
+    "imageUrl": "https://image2url.com/r2/default/images/1770906593899-6032837f-67ad-4ade-8493-3b0e914a5f60.png",
+    "uploadedAt": "?",
+    "downloads": 373
+  }
 ]

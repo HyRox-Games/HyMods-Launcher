@@ -8,7 +8,7 @@
         "downloadUrl": "https://drive.google.com/file/d/1hiaEpWgh4MnKdR-DdJbxEzzS7pOh9LZ2/view?usp=sharing",
         "imageUrl": "https://image2url.com/r2/default/images/1770020501146-7f8693e8-57cd-492e-8b9d-c1f8390d63e3.png",
         "uploadedAt": "?",
-        "downloads": 5677
+        "downloads": 8810
     },
     {
         "id": "2",
@@ -19,7 +19,7 @@
         "downloadUrl": "https://drive.google.com/file/d/1CyRRavjkk789sZ_PQpeNVaVu0Le1XXNp/view?usp=sharing",
         "imageUrl": "https://image2url.com/r2/default/images/1770020706957-8a4262c4-f8e6-4d22-a382-80de90c20445.png",
         "uploadedAt": "?",
-        "downloads": 5677
+        "downloads": 1220
     },
     {
         "id": "3",
@@ -30,7 +30,7 @@
         "downloadUrl": "https://drive.google.com/file/d/1htCxoz9uAZbTFUDe2fTcY3dcWn1YCqVY/view?usp=sharing",
         "imageUrl": "https://image2url.com/r2/default/images/1770067380505-7ceb3a34-bdf8-46bd-811e-193d8b95600e.png",
         "uploadedAt": "?",
-        "downloads": 567767
+        "downloads": 1765
     },
     {
         "id": "4",
@@ -41,6 +41,50 @@
         "downloadUrl": "https://drive.google.com/file/d/1M6HXTFwfwTMVp1e5_eO-Om_pDFrzL35N/view?usp=sharing",
         "imageUrl": "https://image2url.com/r2/default/images/1770100655689-1d2edd70-ebe6-4f8f-9fd3-b8ed432f46c1.png",
         "uploadedAt": "?",
-        "downloads": 5677
-    }
+        "downloads": 142
+    },
+    {
+    "id": "5",
+    "name": "Skull Arena PVP/PVE",
+    "description": "A large open-sky combat arena designed for both PvE battles and PvP fights. Perfect for survival challenges, mob waves, duels, and multiplayer combat events.",
+    "version": "1.0.0",
+    "author": "HyMods Team",
+    "downloadUrl": "https://www.curseforge.com/hytale/worlds/skull-arena-pvp-pve/download/7455127",
+    "imageUrl": "https://image2url.com/r2/default/images/1770904241088-cd085002-272b-438a-82f0-fe1ef4e879cf.png",
+    "uploadedAt": "?",
+    "downloads": 1027
+  },
+  {
+    "id": "6",
+    "name": "Tryzz's Dungeon",
+    "description": "Small dungeon building with some secrets",
+    "version": "1.1.0",
+    "author": "HyMods Team",
+    "downloadUrl": "https://www.curseforge.com/hytale/worlds/tryzzs-dungeon/download/7530610",
+    "imageUrl": "https://image2url.com/r2/default/images/1770904629974-7724ca5e-c54a-4ef6-bd2e-8e5c608f35bd.png",
+    "uploadedAt": "?",
+    "downloads": 431
+  },
+  {
+    "id": "7",
+    "name": "Infected Minigame",
+    "description": "The infection has begun. A group of players starts as zombies and must spread the virus, while the survivors fight to endure until the end. Every second counts—run, work together, and don’t fall… because once you’re infected, there’s no turning back. 🦠🔥",
+    "version": "1.0.0",
+    "author": "HyMods Team",
+    "downloadUrl": "https://www.curseforge.com/hytale/worlds/infected-minigame/download/7522824",
+    "imageUrl": "https://image2url.com/r2/default/images/1770904846613-6c5e1a40-4088-4512-93a9-d0fcb085609a.png",
+    "uploadedAt": "?",
+    "downloads": 97
+  },
+  {
+    "id": "8",
+    "name": "GeometryTale",
+    "description": "Geometry Dash in 2D form recreated in Hytale!",
+    "version": "1.9.0",
+    "author": "HyMods Team",
+    "downloadUrl": "https://www.curseforge.com/hytale/worlds/geometrytale/download/7582145",
+    "imageUrl": "https://image2url.com/r2/default/images/1770905019121-3c91fe66-cfb7-4711-b5ba-a9354bf6895d.png",
+    "uploadedAt": "?",
+    "downloads": 105
+  }
 ]
